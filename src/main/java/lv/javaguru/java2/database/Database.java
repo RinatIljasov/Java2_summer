@@ -3,7 +3,6 @@ package lv.javaguru.java2.database;
 import lv.javaguru.java2.domain.Car;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface Database {
 
@@ -22,6 +21,4 @@ public interface Database {
     boolean customerCanBook(Integer carId);
 
     boolean carIsBooked(Integer carId);
-
-    boolean carIsRented(Integer carId);
 }

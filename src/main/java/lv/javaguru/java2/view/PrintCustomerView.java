@@ -31,7 +31,7 @@ public class PrintCustomerView implements ConsoleView {
     }
 
     public boolean carIsRented(Integer carId) {
-        boolean carIsRented = printCustomerService.carIsRented(carId);
+        boolean carIsRented = printCustomerService.carIsBooked(carId);
         if (!carIsRented) {
             System.out.println("Selected car is not rented.");
         }

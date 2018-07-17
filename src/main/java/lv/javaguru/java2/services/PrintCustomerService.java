@@ -24,8 +24,4 @@ public class PrintCustomerService {
     public boolean carIsBooked(Integer carId) {
         return database.carIsBooked(carId);
     }
-
-    public boolean carIsRented(Integer carId) {
-        return database.carIsRented(carId);
-    }
 }
