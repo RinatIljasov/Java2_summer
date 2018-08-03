@@ -26,17 +26,27 @@ public class InMemoryDatabase implements Database {
     }
 
     @Override
+    public void addCustomer(Customer customer) {
+
+    }
+
+    @Override
+    public void addCar(Car car) {
+
+    }
+
+    @Override
     public List<Car> getAllCars() {
         return new ArrayList<>(cars);
     }
 
     @Override
-    public Car getCarById(Integer carId) {
+    public Car getCarById(Long carId) {
         return getCar(carId);
     }
 
     @Override
-    public void bookCar(Integer carId) {
+    public void bookCar(Long carId) {
         Car car = getCar(carId);
         if (car != null) {
             car.setRented(true);
@@ -45,7 +55,7 @@ public class InMemoryDatabase implements Database {
     }
 
     @Override
-    public void returnCar(Integer carId) {
+    public void returnCar(Long carId) {
         Car car = getCar(carId);
         if (car != null) {
             car.setRented(false);
@@ -53,30 +63,30 @@ public class InMemoryDatabase implements Database {
     }
 
     @Override
-    public double getCustomerBalance() {
+    public double getCustomerBalance(Long customerId) {
         return customer.getMoney();
     }
 
     @Override
-    public String getCustomerName() {
+    public String getCustomerName(Long customerId) {
         return customer.getName();
     }
 
     @Override
-    public boolean customerCanBook(Integer carId) {
+    public boolean customerCanBook(Long carId, Long customerId) {
         Car car = getCar(carId);
         return car != null && customer.getMoney() >= car.getPrice();
     }
 
     @Override
-    public boolean carIsBooked(Integer carId) {
+    public boolean carIsBooked(Long carId) {
         Car car = getCar(carId);
         return car != null && car.isRented();
     }
 
-    private Car getCar(Integer carId) {
+    private Car getCar(Long carId) {
         Optional<Car> foundCar = cars.stream()
-                .filter(c -> c.getId().equals(carId))
+                .filter(c -> c.getId() == carId)
                 .findFirst();
         return foundCar.orElse(null);
     }
