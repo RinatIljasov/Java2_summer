@@ -1,6 +1,7 @@
 package lv.javaguru.java2.services;
 
 import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.utils.ConsoleException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,25 +15,34 @@ public class CarValidatorImpl implements CarValidator {
 
     public boolean checkIfCarCanBeReturned(long carId) {
         boolean carIsRented = database.carIsBooked(carId);
-        if (!carIsRented) {
-            System.out.println("Selected car is not rented.");
+        try {
+            if (!carIsRented) {
+                throw new ConsoleException("Selected car is not rented.");
+            }
+        } finally {
+            return carIsRented;
         }
-        return carIsRented;
     }
 
-    public boolean checkIfCarIsAlreadyBooked(Long carId) {
+    public boolean checkIfCarIsAlreadyBooked(long carId) {
         boolean carIsBooked = database.carIsBooked(carId);
-        if (carIsBooked) {
-            System.out.println("Selected car is already booked.");
+        try {
+            if (carIsBooked) {
+                throw new ConsoleException("Selected car is already booked.");
+            }
+        } finally {
+            return carIsBooked;
         }
-        return carIsBooked;
     }
 
     public boolean checkIfCustomerHasEnoughMoney(long carId, long customerId) {
         boolean customerCanBook = database.customerCanBook(carId, customerId);
-        if (!customerCanBook) {
-            System.out.println("Customer has not enough money!");
+        try {
+            if (!customerCanBook) {
+                throw new ConsoleException("Customer has not enough money!");
+            }
+        } finally {
+            return customerCanBook;
         }
-        return customerCanBook;
     }
 }

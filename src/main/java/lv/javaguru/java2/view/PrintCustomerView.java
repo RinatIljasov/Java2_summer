@@ -1,5 +1,6 @@
 package lv.javaguru.java2.view;
 
+import lv.javaguru.java2.domain.Customer;
 import lv.javaguru.java2.services.PrintCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,7 +12,7 @@ public class PrintCustomerView implements ConsoleView {
     private PrintCustomerService printCustomerService;
 
     public void printCustomerBalance() {
-        System.out.println("Customer " + printCustomerService.getCustomerName(1L) + " balance: " + printCustomerService.getCustomerBalance(1L) + "EUR");
+        System.out.println("Customer " + printCustomerService.getCustomerName(Customer.CUSTOMER_ID) + " balance: " + printCustomerService.getCustomerBalance(Customer.CUSTOMER_ID) + "EUR");
         System.out.println();
     }
 

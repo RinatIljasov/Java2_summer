@@ -17,7 +17,7 @@ public class PrintCarsService {
         return database.getAllCars();
     }
 
-    public Car getCarById(Long carId) {
+    public Car getCarById(long carId) {
         return database.getCarById(carId);
     }
 }

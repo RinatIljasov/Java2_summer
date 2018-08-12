@@ -22,7 +22,7 @@ public class PrintCarServiceTest {
     private Database database;
 
     @Test
-    public void checkIfCangetAllCars() {
+    public void checkIfCanGetAllCars() {
         Mockito.when(database.getAllCars()).thenReturn(new ArrayList<Car>());
         List<Car> cars = database.getAllCars();
         assertNotNull(cars);

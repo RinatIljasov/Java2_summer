@@ -1,13 +1,30 @@
 package lv.javaguru.java2.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "customer")
 public class Customer {
-    private String name;
-    private double money;
+
+    public static final long CUSTOMER_ID = 1L;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public Customer(String name, double money) {
-        this.name = name;
-        this.money = money;
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "money", nullable = false)
+    private double money;
+
+    public Customer() {
     }
 
     public String getName() {

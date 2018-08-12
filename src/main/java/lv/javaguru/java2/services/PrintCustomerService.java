@@ -10,11 +10,11 @@ public class PrintCustomerService {
     @Autowired
     private Database database;
 
-    public double getCustomerBalance(Long customerId) {
+    public double getCustomerBalance(long customerId) {
         return database.getCustomerBalance(customerId);
     }
 
-    public String getCustomerName(Long customerId) {
+    public String getCustomerName(long customerId) {
         return database.getCustomerName(customerId);
     }
 

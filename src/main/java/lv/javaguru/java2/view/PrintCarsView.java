@@ -16,7 +16,7 @@ public class PrintCarsView implements ConsoleView {
         System.out.println();
     }
 
-    public void printBookedCarById(Long carId) {
+    public void printBookedCarById(long carId) {
         Car car = printCarsService.getCarById(carId);
         if (car != null) {
             System.out.println("Selected car is booked: " + car.getName());
@@ -25,7 +25,7 @@ public class PrintCarsView implements ConsoleView {
         }
     }
 
-    public void printReturnedCarById(Long carId) {
+    public void printReturnedCarById(long carId) {
         Car car = printCarsService.getCarById(carId);
         if (car != null) {
             System.out.println("Selected car is returned: " + car.getName());

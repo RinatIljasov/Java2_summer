@@ -11,19 +11,19 @@ public interface Database {
 
     void addCar(Car car);
 
-    List<Car> getAllCars();
+    List getAllCars();
 
-    Car getCarById(Long carId);
+    Car getCarById(long carId);
 
-    void bookCar(Long carId);
+    void bookCar(long carId, long customerId);
 
-    void returnCar(Long carId);
+    void returnCar(long carId);
 
-    double getCustomerBalance(Long customerId);
+    double getCustomerBalance(long customerId);
 
-    String getCustomerName(Long customerId);
+    String getCustomerName(long customerId);
 
-    boolean customerCanBook(Long carId, Long customerId);
+    boolean customerCanBook(long carId, long customerId);
 
-    boolean carIsBooked(Long carId);
+    boolean carIsBooked(long carId);
 }

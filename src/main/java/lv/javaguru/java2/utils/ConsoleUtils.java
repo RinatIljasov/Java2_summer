@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ConsoleUtils {
 
-    public static Integer getMenuItemFromConsole(boolean isSilent) {
+    public static int getMenuItemFromConsole(boolean isSilent) {
         if (!isSilent) {
             System.out.print("Please enter menu item number to execute:");
         }

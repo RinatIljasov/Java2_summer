@@ -1,7 +1,7 @@
 package lv.javaguru.java2.view;
 
+import lv.javaguru.java2.domain.Customer;
 import lv.javaguru.java2.services.BookCarService;
-import lv.javaguru.java2.services.CarValidatorImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,10 +24,10 @@ public class BookCarView implements ConsoleView {
         printCarsView.printCars();
         System.out.println("Select a car to book:");
         Integer carId = getMenuItemFromConsole(true);
-        boolean customerCanBook = bookCarService.checkIfCustomerHasEnoughMoney(carId.longValue(), 1);
+        boolean customerCanBook = bookCarService.checkIfCustomerHasEnoughMoney(carId.longValue(), Customer.CUSTOMER_ID);
         boolean carIsBooked = bookCarService.checkIfCarIsAlreadyBooked(carId.longValue());
         if (customerCanBook && !carIsBooked) {
-            bookCarService.bookCar(carId.longValue());
+            bookCarService.bookCar(carId.longValue(), Customer.CUSTOMER_ID);
             printCarsView.printBookedCarById(carId.longValue());
             printCustomerView.printCustomerBalance();
         }

@@ -18,7 +18,7 @@ import static lv.javaguru.java2.utils.ConsoleUtils.getMenuItemFromConsole;
 
 class CarRentMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringAppConfig.class);
 

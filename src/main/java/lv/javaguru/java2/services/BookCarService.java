@@ -12,8 +12,8 @@ public class BookCarService {
     @Autowired
     private CarValidatorImpl carValidator;
 
-    public void bookCar(Long carId) {
-        database.bookCar(carId);
+    public void bookCar(long carId, long customerId) {
+        database.bookCar(carId, customerId);
     }
 
     public boolean checkIfCustomerHasEnoughMoney(long carId, long customerId) {

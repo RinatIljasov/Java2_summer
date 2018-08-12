@@ -2,7 +2,6 @@ package lv.javaguru.java2.database;
 
 import lv.javaguru.java2.domain.Car;
 import lv.javaguru.java2.domain.Customer;
-import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+//@Component
 public class JDBCDatabaseImpl extends JDBCRepository implements Database {
 
     public void addCustomer(Customer customer) {
@@ -89,7 +88,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
     }
 
     @Override
-    public Car getCarById(Long carId) {
+    public Car getCarById(long carId) {
         Car car = new Car();
         Connection connection = null;
         try {
@@ -111,7 +110,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
     }
 
     @Override
-    public void bookCar(Long carId) {
+    public void bookCar(long carId, long customerId) {
         Connection connection = null;
         try {
             connection = getConnection();
@@ -148,7 +147,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
     }
 
     @Override
-    public void returnCar(Long carId) {
+    public void returnCar(long carId) {
         Connection connection = null;
         try {
             connection = getConnection();
@@ -162,7 +161,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
     }
 
     @Override
-    public double getCustomerBalance(Long customerId) {
+    public double getCustomerBalance(long customerId) {
         double balance = 0;
         Connection connection = null;
         try {
@@ -181,7 +180,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
     }
 
     @Override
-    public String getCustomerName(Long customerId) {
+    public String getCustomerName(long customerId) {
         String name = "";
         Connection connection = null;
         try {
@@ -200,7 +199,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
     }
 
     @Override
-    public boolean customerCanBook(Long carId, Long customerId) {
+    public boolean customerCanBook(long carId, long customerId) {
         double carPrice = 1;
         double customersMoney = 0;
         Connection connection = null;
@@ -226,7 +225,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
     }
 
     @Override
-    public boolean carIsBooked(Long carId) {
+    public boolean carIsBooked(long carId) {
         boolean rented = false;
         Connection connection = null;
         try {

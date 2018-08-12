@@ -41,12 +41,12 @@ public class InMemoryDatabase implements Database {
     }
 
     @Override
-    public Car getCarById(Long carId) {
+    public Car getCarById(long carId) {
         return getCar(carId);
     }
 
     @Override
-    public void bookCar(Long carId) {
+    public void bookCar(long carId, long customerId) {
         Car car = getCar(carId);
         if (car != null) {
             car.setRented(true);
@@ -55,7 +55,7 @@ public class InMemoryDatabase implements Database {
     }
 
     @Override
-    public void returnCar(Long carId) {
+    public void returnCar(long carId) {
         Car car = getCar(carId);
         if (car != null) {
             car.setRented(false);
@@ -63,23 +63,23 @@ public class InMemoryDatabase implements Database {
     }
 
     @Override
-    public double getCustomerBalance(Long customerId) {
+    public double getCustomerBalance(long customerId) {
         return customer.getMoney();
     }
 
     @Override
-    public String getCustomerName(Long customerId) {
+    public String getCustomerName(long customerId) {
         return customer.getName();
     }
 
     @Override
-    public boolean customerCanBook(Long carId, Long customerId) {
+    public boolean customerCanBook(long carId, long customerId) {
         Car car = getCar(carId);
         return car != null && customer.getMoney() >= car.getPrice();
     }
 
     @Override
-    public boolean carIsBooked(Long carId) {
+    public boolean carIsBooked(long carId) {
         Car car = getCar(carId);
         return car != null && car.isRented();
     }

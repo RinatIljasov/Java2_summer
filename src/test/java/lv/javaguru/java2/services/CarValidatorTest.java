@@ -19,26 +19,12 @@ public class CarValidatorTest {
     @Mock
     private Database database;
 
-//    @Mock
-//    private Car car;
-
     @InjectMocks
     private CarValidatorImpl validator;
-
-//    @Before
-//    public void init() {
-//        validator = new CarValidatorImpl(database);
-//
-//        Mockito.when(database.getCarById(DEFAULT_CAR_ID)).thenReturn(car);
-//        Mockito.when(car.getName()).thenReturn("Car1");
-//        Mockito.when(car.getPrice()).thenReturn(20.0);
-//        Mockito.when(car.isRented()).thenReturn(Boolean.FALSE);
-//    }
 
     @Test
     public void checkIfCarCanBeReturnedIfAlreadyBooked() {
         Mockito.when(database.carIsBooked(DEFAULT_CAR_ID)).thenReturn(true);
-        //assertEquals(validator.checkIfCarCanBeReturned(DEFAULT_CAR_ID), true);
         boolean result = validator.checkIfCarCanBeReturned(DEFAULT_CAR_ID);
         assertTrue(result);
     }
@@ -55,8 +41,9 @@ public class CarValidatorTest {
         Mockito.when(database.carIsBooked(DEFAULT_CAR_ID)).thenReturn(true);
         boolean result = validator.checkIfCarIsAlreadyBooked(DEFAULT_CAR_ID);
         assertTrue(result);
+    }
 
-    }@Test
+    @Test
     public void checkIfCarIsNotAlreadyBooked() {
         Mockito.when(database.carIsBooked(DEFAULT_CAR_ID)).thenReturn(false);
         boolean result = validator.checkIfCarIsAlreadyBooked(DEFAULT_CAR_ID);
@@ -69,6 +56,7 @@ public class CarValidatorTest {
         boolean result = validator.checkIfCustomerHasEnoughMoney(DEFAULT_CAR_ID, DEFAULT_CUSTOMER_ID);
         assertTrue(result);
     }
+
     @Test
     public void checkIfCustomerHasNotEnoughMoney() {
         Mockito.when(database.customerCanBook(DEFAULT_CAR_ID, DEFAULT_CUSTOMER_ID)).thenReturn(false);

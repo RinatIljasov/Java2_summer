@@ -12,11 +12,11 @@ public class ReturnCarService {
     @Autowired
     private CarValidatorImpl carValidator;
 
-    public void returnCar(Long carId) {
+    public void returnCar(long carId) {
         database.returnCar(carId);
     }
 
-    public boolean checkIfCarCanBeReturned(long carId) {
+    public boolean checkIfCarCanBeReturned (long carId) {
         return carValidator.checkIfCarCanBeReturned(carId);
     }
 }
