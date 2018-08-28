@@ -16,7 +16,7 @@ public class ReturnCarService {
         database.returnCar(carId);
     }
 
-    public boolean checkIfCarCanBeReturned (long carId) {
+    public boolean checkIfCarCanBeReturned(long carId) {
         return carValidator.checkIfCarCanBeReturned(carId);
     }
 }

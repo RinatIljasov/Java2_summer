@@ -48,40 +48,41 @@ public class InMemoryDatabase implements Database {
     @Override
     public void bookCar(long carId, long customerId) {
         Car car = getCar(carId);
-        if (car != null) {
-            car.setRented(true);
-            customer.dischargeMoney(car.getPrice());
-        }
+//        if (car != null) {
+//            car.setRented(true);
+//            customer.dischargeMoney(car.getPrice());
+//        }
     }
 
     @Override
     public void returnCar(long carId) {
         Car car = getCar(carId);
-        if (car != null) {
-            car.setRented(false);
-        }
+//        if (car != null) {
+//            car.setRented(false);
+//        }
     }
 
     @Override
     public double getCustomerBalance(long customerId) {
-        return customer.getMoney();
+        return customer.getBalance();
     }
 
     @Override
     public String getCustomerName(long customerId) {
-        return customer.getName();
+        return customer.getFirstName();
     }
 
     @Override
     public boolean customerCanBook(long carId, long customerId) {
         Car car = getCar(carId);
-        return car != null && customer.getMoney() >= car.getPrice();
+        return car != null && customer.getBalance() >= car.getPrice();
     }
 
     @Override
     public boolean carIsBooked(long carId) {
         Car car = getCar(carId);
-        return car != null && car.isRented();
+        //return car != null && car.isRented();
+        return true;
     }
 
     private Car getCar(Long carId) {

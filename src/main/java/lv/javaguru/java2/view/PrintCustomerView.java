@@ -12,7 +12,7 @@ public class PrintCustomerView implements ConsoleView {
     private PrintCustomerService printCustomerService;
 
     public void printCustomerBalance() {
-        System.out.println("Customer " + printCustomerService.getCustomerName(Customer.CUSTOMER_ID) + " balance: " + printCustomerService.getCustomerBalance(Customer.CUSTOMER_ID) + "EUR");
+        System.out.println("Customer Name: " + printCustomerService.getCustomerName(Customer.CUSTOMER_ID) + ", Customer Balance: " + printCustomerService.getCustomerBalance(Customer.CUSTOMER_ID) + " EUR");
         System.out.println();
     }
 

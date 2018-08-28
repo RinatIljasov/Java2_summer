@@ -1,7 +1,6 @@
 package lv.javaguru.java2.domain;
 
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,18 +16,16 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "manufacturer", nullable = false)
+    private String manufacturer;
 
     @Column(name = "price", nullable = false)
     private double price;
 
-    @Column(name = "rented", nullable = false, columnDefinition = "integer")
-    private boolean rented;
 
-    public Car(Integer id, String name, double price) {
+    public Car(Integer id, String manufacturer, double price) {
         this.id = id;
-        this.name = name;
+        this.manufacturer = manufacturer;
         this.price = price;
     }
 
@@ -44,11 +41,11 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return manufacturer;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.manufacturer = name;
     }
 
     public double getPrice() {
@@ -59,16 +56,9 @@ public class Car {
         this.price = price;
     }
 
-    public boolean isRented() {
-        return rented;
-    }
-
-    public void setRented(boolean rented) {
-        this.rented = rented;
-    }
 
     @Override
     public String toString() {
-        return id + ", " + name + ", " + price + ", rented " + rented;
+        return "Car Id: " + id + ", Car Name: " + manufacturer + ", Car Price: " + price + " EUR";
     }
 }
