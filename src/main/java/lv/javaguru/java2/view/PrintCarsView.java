@@ -1,7 +1,7 @@
 package lv.javaguru.java2.view;
 
+import lv.javaguru.java2.businesslogic.printcar.PrintCarsService;
 import lv.javaguru.java2.domain.Car;
-import lv.javaguru.java2.services.PrintCarsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,7 @@ public class PrintCarsView implements ConsoleView {
     public void printBookedCarById(long carId) {
         Car car = printCarsService.getCarById(carId);
         if (car != null) {
-            System.out.println("Selected car is booked: " + car.getName());
+            System.out.println("Selected car is booked: " + car.getManufacturer());
         } else {
             System.out.println("Selected car not found.");
         }
@@ -28,7 +28,7 @@ public class PrintCarsView implements ConsoleView {
     public void printReturnedCarById(long carId) {
         Car car = printCarsService.getCarById(carId);
         if (car != null) {
-            System.out.println("Selected car is returned: " + car.getName());
+            System.out.println("Selected car is returned: " + car.getManufacturer());
         } else {
             System.out.println("Selected car not found.");
         }

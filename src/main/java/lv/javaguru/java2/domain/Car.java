@@ -40,11 +40,11 @@ public class Car {
         this.id = id;
     }
 
-    public String getName() {
+    public String getManufacturer() {
         return manufacturer;
     }
 
-    public void setName(String name) {
+    public void setManufacturer(String name) {
         this.manufacturer = name;
     }
 

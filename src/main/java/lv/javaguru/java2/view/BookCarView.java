@@ -1,7 +1,10 @@
 package lv.javaguru.java2.view;
 
+import lv.javaguru.java2.businesslogic.bookcar.BookCarService;
 import lv.javaguru.java2.domain.Customer;
-import lv.javaguru.java2.services.BookCarService;
+import lv.javaguru.java2.view.ConsoleView;
+import lv.javaguru.java2.view.PrintCarsView;
+import lv.javaguru.java2.view.PrintCustomerView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

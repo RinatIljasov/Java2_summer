@@ -1,6 +1,6 @@
 package lv.javaguru.java2.view;
 
-import lv.javaguru.java2.services.ReturnCarService;
+import lv.javaguru.java2.businesslogic.returncar.ReturnCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,17 +1,17 @@
-package lv.javaguru.java2.database;
+package lv.javaguru.java2.database.jdbc;
 
+import lv.javaguru.java2.database.CarRepository;
+import lv.javaguru.java2.database.CustomerRepository;
 import lv.javaguru.java2.domain.Car;
 import lv.javaguru.java2.domain.Customer;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 //@Component
-public class JDBCDatabaseImpl extends JDBCRepository implements Database {
+public class JDBCDatabaseImpl extends JDBCRepository implements CarRepository, CustomerRepository {
 
     public void addCustomer(Customer customer) {
         Connection connection = null;
@@ -73,7 +73,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
 //            while (resultSet.next()) {
 //                Car newCar = new Car();
 //                newCar.setId(resultSet.getLong("id"));
-//                newCar.setName(resultSet.getString("name"));
+//                newCar.setManufacturer(resultSet.getString("name"));
 //                newCar.setPrice(resultSet.getDouble("price"));
 //                newCar.setRented(resultSet.getInt("rented") == 1);
 //                lisrOfCars.add(newCar);
@@ -96,7 +96,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
             ResultSet resultSet = getCarByIdFromDB(connection, carId);
             while (resultSet.next()) {
                 car.setId(resultSet.getLong("id"));
-                car.setName(resultSet.getString("name"));
+                car.setManufacturer(resultSet.getString("name"));
                 car.setPrice(resultSet.getDouble("price"));
                 //car.setRented(resultSet.getInt("rented") == 1);
             }
@@ -110,7 +110,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
     }
 
     @Override
-    public void bookCar(long carId, long customerId) {
+    public void bookCar(Long carId, Long customerId) {
         Connection connection = null;
         try {
             connection = getConnection();
@@ -160,69 +160,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
         }
     }
 
-    @Override
-    public double getCustomerBalance(long customerId) {
-        double balance = 0;
-        Connection connection = null;
-        try {
-            connection = getConnection();
-            ResultSet resultSet = getCustomerByIdFromDB(connection, customerId);
-            while (resultSet.next()) {
-                balance = resultSet.getDouble("money");
-            }
-        } catch (Throwable e) {
-            System.out.println("Exception while getting Customer balance by id!");
-            e.printStackTrace();
-        } finally {
-            closeConnnection(connection);
-        }
-        return balance;
-    }
 
-    @Override
-    public String getCustomerName(long customerId) {
-        String name = "";
-        Connection connection = null;
-        try {
-            connection = getConnection();
-            ResultSet resultSet = getCustomerByIdFromDB(connection, customerId);
-            while (resultSet.next()) {
-                name = resultSet.getString("name");
-            }
-        } catch (Throwable e) {
-            System.out.println("Exception while getting Customer name by id!");
-            e.printStackTrace();
-        } finally {
-            closeConnnection(connection);
-        }
-        return name;
-    }
-
-    @Override
-    public boolean customerCanBook(long carId, long customerId) {
-        double carPrice = 1;
-        double customersMoney = 0;
-        Connection connection = null;
-        try {
-            connection = getConnection();
-
-            ResultSet resultSetCar = getCarByIdFromDB(connection, carId);
-            while (resultSetCar.next()) {
-                carPrice = resultSetCar.getDouble("price");
-            }
-
-            ResultSet resultSetCustomer = getCustomerByIdFromDB(connection, customerId);
-            while (resultSetCustomer.next()) {
-                customersMoney = resultSetCustomer.getDouble("money");
-            }
-        } catch (Throwable e) {
-            System.out.println("Exception while getting Customer and Car price!");
-            e.printStackTrace();
-        } finally {
-            closeConnnection(connection);
-        }
-        return customersMoney >= carPrice;
-    }
 
     @Override
     public boolean carIsBooked(long carId) {
@@ -241,6 +179,11 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
             closeConnnection(connection);
         }
         return rented;
+    }
+
+    @Override
+    public boolean customerCanBook(long carId, long customerId) {
+        return false;
     }
 
     private ResultSet getCarByIdFromDB(Connection connection, long carId) throws Throwable {
@@ -275,4 +218,8 @@ public class JDBCDatabaseImpl extends JDBCRepository implements Database {
 //        preparedStatement.executeUpdate();
     }
 
+    @Override
+    public Customer getCustomerById(long customerId) {
+        return null;
+    }
 }

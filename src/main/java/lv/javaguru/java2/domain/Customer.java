@@ -31,10 +31,16 @@ public class Customer {
     private double balance;
 
     @OneToMany(mappedBy = "customerId")
-    private List<Contract> constactList = new ArrayList<>();
+    private List<Contract> contractList = new ArrayList<>();
 
 
     public Customer() {
+    }
+
+    public Customer(String firstName, String lastName, double balance) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.balance = balance;
     }
 
     public String getFirstName() {

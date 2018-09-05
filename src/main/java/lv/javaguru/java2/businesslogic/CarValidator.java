@@ -1,4 +1,4 @@
-package lv.javaguru.java2.services;
+package lv.javaguru.java2.businesslogic;
 
 public interface CarValidator {
 

@@ -1,20 +1,18 @@
-package lv.javaguru.java2.services;
+package lv.javaguru.java2.businesslogic;
 
-import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.database.orm.CarRepositoryImpl;
 import lv.javaguru.java2.utils.ConsoleException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CarValidatorImpl implements CarValidator {
 
-    private Database database;
-
-    public CarValidatorImpl(Database database) {
-        this.database = database;
-    }
+    @Autowired
+    private CarRepositoryImpl carRepository;
 
     public boolean checkIfCarCanBeReturned(long carId) {
-        boolean carIsRented = database.carIsBooked(carId);
+        boolean carIsRented = carRepository.carIsBooked(carId);
         try {
             if (!carIsRented) {
                 throw new ConsoleException("Selected car is not rented.");
@@ -25,7 +23,7 @@ public class CarValidatorImpl implements CarValidator {
     }
 
     public boolean checkIfCarIsAlreadyBooked(long carId) {
-        boolean carIsBooked = database.carIsBooked(carId);
+        boolean carIsBooked = carRepository.carIsBooked(carId);
         try {
             if (carIsBooked) {
                 throw new ConsoleException("Selected car is already booked.");
@@ -36,7 +34,7 @@ public class CarValidatorImpl implements CarValidator {
     }
 
     public boolean checkIfCustomerHasEnoughMoney(long carId, long customerId) {
-        boolean customerCanBook = database.customerCanBook(carId, customerId);
+        boolean customerCanBook = carRepository.customerCanBook(carId, customerId);
         try {
             if (!customerCanBook) {
                 throw new ConsoleException("Customer has not enough money!");

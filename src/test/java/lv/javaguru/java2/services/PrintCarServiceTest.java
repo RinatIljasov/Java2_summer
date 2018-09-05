@@ -1,6 +1,6 @@
 package lv.javaguru.java2.services;
 
-import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.database.orm.CarRepositoryImpl;
 import lv.javaguru.java2.domain.Car;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,31 +19,31 @@ public class PrintCarServiceTest {
 
     public static final long DEFAULT_CAR_ID = 1L;
     @Mock
-    private Database database;
+    private CarRepositoryImpl carRepository;
 
     @Test
     public void checkIfCanGetAllCars() {
-        Mockito.when(database.getAllCars()).thenReturn(new ArrayList<Car>());
-        List<Car> cars = database.getAllCars();
+        Mockito.when(carRepository.getAllCars()).thenReturn(new ArrayList<Car>());
+        List<Car> cars = carRepository.getAllCars();
         assertNotNull(cars);
     }
     @Test
     public void checkIfCannotGetAllCars() {
-        Mockito.when(database.getAllCars()).thenReturn(null);
-        List<Car> cars = database.getAllCars();
+        Mockito.when(carRepository.getAllCars()).thenReturn(null);
+        List<Car> cars = carRepository.getAllCars();
         assertNull(cars);
     }
 
     @Test
     public void checkIfCanGetCarById() {
-        Mockito.when(database.getCarById(DEFAULT_CAR_ID)).thenReturn(new Car());
-        Car car = database.getCarById(DEFAULT_CAR_ID);
+        Mockito.when(carRepository.getCarById(DEFAULT_CAR_ID)).thenReturn(new Car());
+        Car car = carRepository.getCarById(DEFAULT_CAR_ID);
         assertNotNull(car);
     }
     @Test
     public void checkIfCannotGetCarById() {
-        Mockito.when(database.getCarById(DEFAULT_CAR_ID)).thenReturn(null);
-        Car car = database.getCarById(DEFAULT_CAR_ID);
+        Mockito.when(carRepository.getCarById(DEFAULT_CAR_ID)).thenReturn(null);
+        Car car = carRepository.getCarById(DEFAULT_CAR_ID);
         assertNull(car);
     }
 }
