@@ -17,7 +17,6 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer/{id}", method = RequestMethod.GET)
     public CustomerDTO getCustomerById(@PathVariable("id") Long id) {
-
         Customer customer = printCustomerService.getCustomerById(id);
         return new CustomerDTO(customer.getId(), customer.getFirstName(), customer.getLastName(), customer.getBalance());
     }

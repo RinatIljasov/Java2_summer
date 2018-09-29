@@ -88,7 +88,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements CarRepository, C
     }
 
     @Override
-    public Car getCarById(long carId) {
+    public Car getCarById(Long carId) {
         Car car = new Car();
         Connection connection = null;
         try {
@@ -147,7 +147,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements CarRepository, C
     }
 
     @Override
-    public void returnCar(long carId) {
+    public void returnCar(Long carId) {
         Connection connection = null;
         try {
             connection = getConnection();
@@ -159,7 +159,6 @@ public class JDBCDatabaseImpl extends JDBCRepository implements CarRepository, C
             closeConnnection(connection);
         }
     }
-
 
 
     @Override
@@ -219,7 +218,7 @@ public class JDBCDatabaseImpl extends JDBCRepository implements CarRepository, C
     }
 
     @Override
-    public Customer getCustomerById(long customerId) {
+    public Customer getCustomerById(Long customerId) {
         return null;
     }
 }

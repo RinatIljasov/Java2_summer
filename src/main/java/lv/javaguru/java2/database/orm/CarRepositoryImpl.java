@@ -19,7 +19,7 @@ public class CarRepositoryImpl extends ORMRepository implements CarRepository {
     }
 
     @Override
-    public Car getCarById(long carId) {
+    public Car getCarById(Long carId) {
         return (Car) session()
                 .createCriteria(Car.class)
                 .add(Restrictions.eq("id", carId))
@@ -37,7 +37,7 @@ public class CarRepositoryImpl extends ORMRepository implements CarRepository {
     }
 
     @Override
-    public void returnCar(long carId) {
+    public void returnCar(Long carId) {
         Contract contract = getContractByCarId(carId);
         contract.setExpired(true);
         session().update(contract);

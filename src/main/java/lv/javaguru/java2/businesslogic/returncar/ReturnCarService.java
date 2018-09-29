@@ -16,7 +16,7 @@ public class ReturnCarService {
     @Autowired
     private CarValidatorImpl carValidator;
 
-    public void returnCar(long carId) {
+    public void returnCar(Long carId) {
         carRepository.returnCar(carId);
     }
 

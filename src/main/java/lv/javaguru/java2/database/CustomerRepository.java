@@ -4,6 +4,6 @@ import lv.javaguru.java2.domain.Customer;
 
 public interface CustomerRepository {
 
-    Customer getCustomerById(long customerId);
+    Customer getCustomerById(Long customerId);
 
 }

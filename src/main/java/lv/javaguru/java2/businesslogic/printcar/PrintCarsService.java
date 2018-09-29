@@ -19,7 +19,7 @@ public class PrintCarsService {
         return carRepository.getAllCars();
     }
 
-    public Car getCarById(long carId) {
+    public Car getCarById(Long carId) {
         return carRepository.getCarById(carId);
     }
 }

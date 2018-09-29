@@ -33,7 +33,7 @@ public class InMemoryDatabase implements CarRepository, CustomerRepository {
     }
 
     @Override
-    public Car getCarById(long carId) {
+    public Car getCarById(Long carId) {
         return getCar(carId);
     }
 
@@ -47,7 +47,7 @@ public class InMemoryDatabase implements CarRepository, CustomerRepository {
     }
 
     @Override
-    public void returnCar(long carId) {
+    public void returnCar(Long carId) {
         Car car = getCar(carId);
 //        if (car != null) {
 //            car.setRented(false);
@@ -75,7 +75,7 @@ public class InMemoryDatabase implements CarRepository, CustomerRepository {
     }
 
     @Override
-    public Customer getCustomerById(long customerId) {
+    public Customer getCustomerById(Long customerId) {
         return null;
     }
 }

@@ -8,11 +8,11 @@ public interface CarRepository {
 
     List getAllCars();
 
-    Car getCarById(long carId);
+    Car getCarById(Long carId);
 
     void bookCar(Long carId, Long customerId);
 
-    void returnCar(long carId);
+    void returnCar(Long carId);
 
     boolean carIsBooked(long carId);
 

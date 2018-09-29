@@ -14,7 +14,7 @@ public class PrintCustomerService {
     @Autowired
     private CustomerRepositoryImlp customerRepository;
 
-    public Customer getCustomerById(long customerId) {
+    public Customer getCustomerById(Long customerId) {
         return customerRepository.getCustomerById(customerId);
     }
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class CustomerRepositoryImlp extends ORMRepository implements CustomerRepository {
 
     @Override
-    public Customer getCustomerById(long customerId) {
+    public Customer getCustomerById(Long customerId) {
         return (Customer) session()
                 .createCriteria(Customer.class)
                 .add(Restrictions.eq("id", customerId))

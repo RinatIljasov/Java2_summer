@@ -73,5 +73,4 @@ public class SpringAppConfig {
         return new HibernateTransactionManager(sessionFactory);
     }
 
-
 }
